@@ -976,6 +976,12 @@ BUTTON HOVER
 /* attendance */
 
 .attendance-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
   margin-bottom: 2rem;
 }
 
@@ -992,13 +998,28 @@ BUTTON HOVER
 .radio-option {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
-  gap: 0.6rem;
+  gap: 0.55rem;
 
-  margin:
-    0 1rem;
+  margin: 0;
 
   color: #333;
+  line-height: 1;
+}
+
+.radio-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #6f846d;
+  flex: 0 0 18px;
+  transform: translateY(-0.5px);
+}
+
+.radio-option span {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 /* inputs */
@@ -1378,4 +1399,28 @@ button {
   opacity: 0;
 
   transition-delay: 1.42s;
+}
+
+/* ==================================================
+   LANDSCAPE: KEEP MOBILE CANVAS + PASTEL SIDES
+================================================== */
+
+@media (orientation: landscape) and (max-height: 900px) {
+  body {
+    background: #eef3e6;
+  }
+
+  .hero-envelope {
+    left: 50%;
+    right: auto;
+    width: min(430px, 100vw);
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 200vmax #eef3e6;
+  }
+
+  .invite-site {
+    width: min(430px, 100vw);
+    margin: 0 auto;
+    box-shadow: 0 0 0 200vmax #eef3e6;
+  }
 }

@@ -26,11 +26,13 @@ const resetToTop = () => {
 };
 
 window.addEventListener("load", () => {
+  document.body.classList.add("envelope-locked");
   resetToTop();
   requestAnimationFrame(resetToTop);
 });
 
 window.addEventListener("pageshow", () => {
+  document.body.classList.add("envelope-locked");
   resetToTop();
 });
 
@@ -39,6 +41,7 @@ window.addEventListener("pageshow", () => {
 ========================= */
 
 flap.addEventListener("click", async () => {
+  resetToTop();
 
   /* START MUSIC */
 
@@ -88,6 +91,7 @@ flap.addEventListener("click", async () => {
   setTimeout(() => {
 
     wrapper.classList.add("fade-out");
+    document.body.classList.remove("envelope-locked");
 
     invite.classList.add("show");
 

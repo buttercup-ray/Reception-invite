@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Wedding Invite</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- =========================
+       MUSIC
+  ========================== -->
+
+  <audio id="bgMusic" loop preload="auto">
+
+    <source
+      src="bg-music.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+  <!-- =========================
+       MUSIC TOGGLE
+  ========================== -->
+
+  <button
+    class="music-toggle"
+    id="musicToggle"
+  >
+
+    <img
+      src="music-on.svg"
+      id="musicIcon"
+      alt=""
+    >
+
+  </button>
+
+<!-- =========================
+     ENVELOPE INTRO
+========================== -->
+
+<section
+  class="hero-envelope"
+  id="wrapper"
+>
+
+  <div class="envelope-scene">
+
+    <!-- BASE -->
+
+    <img
+      src="envelope-base.png"
+      class="envelope-base"
+      alt=""
+    >
+
+    <!-- FLAP -->
+
+    <img
+      src="flap-full-width.png"
+      class="envelope-flap"
+      id="flap"
+      alt=""
+    >
+
+  </div>
+
+</section>
+
+  <!-- =========================
+       INVITE WEBSITE
+  ========================== -->
+
+  <main
+    class="invite-site"
+    id="invite"
+  >
+
+    <section class="section hero-section">
+
+  <!-- =========================
+       CINEMATIC BACKGROUND
+  ========================== -->
+
+  <div class="cinematic-bg">
+
+    <!-- SKY -->
+    <img
+      src="BG-1.png"
+      class="scene-layer bg1"
+      alt=""
+    >
+
+    <!-- PALACE -->
+    <img
+      src="BG-LAYER-2.png"
+      class="scene-layer bg2"
+      alt=""
+    >
+
+    <!-- LOTUS -->
+    <img
+      src="BG-LAYER-3.png"
+      class="scene-layer bg3"
+      alt=""
+    >
+
+    <!-- HANGING FLORALS -->
+    <img
+      src="BG-Layer-4.png"
+      class="scene-layer bg4"
+      alt=""
+    >
+
+  </div>
+
+  <!-- =========================
+       TEXT CONTENT
+  ========================== -->
+
+  <div class="hero-content">
+
+    <div class="bismillah">
+
+      <img
+        src="Bismillah-.png"
+        alt=""
+      >
+
+    </div>
+
+    <p class="family-line">
+      Drs Samia & Shahid Latif
+    </p>
+
+    <p class="intro-copy">
+      request the pleasure of your company
+      to celebrate the wedding of their beloved daughter
+    </p>
+
+    <h1 class="couple-names">
+
+      Zahra
+
+      <span class="connective-word">
+        with
+      </span>
+
+      Musa
+
+    </h1>
+
+    <p class="groom-family">
+
+      <span class="family-prefix">
+        S/O
+      </span>
+
+      <br>
+
+      Mrs Ambereen & Dr Imran Malik
+
+    </p>
+
+  </div>
+
+</section>
+    <section class="section details-section">
+
+  <div class="details-content">
+
+    <h2 class="details-heading">
+      Inshaa Allah
+    </h2>
+
+    <span class="details-on">
+      on
+    </span>
+
+    <h3 class="event-date">
+      23rd July, 2026
+    </h3>
+
+    <p class="event-time">
+      5pm Onwards
+    </p>
+
+    <p class="venue">
+      IXL, <strong>Dallas Burston Polo Club</strong>, Stoneythorpe Estate, Southam,
+      Warwickshire, CV47 2DL
+    </p>
+
+    <a
+      href="#"
+      class="map-button"
+    >
+      Locate on Google Maps
+    </a>
+
+  </div>
+
+  <div class="flowers-bottom details-flowers">
+
+    <img
+      src="bottom-flowers.png"
+      alt=""
+    >
+
+  </div>
+
+</section>
+
+    <!-- =========================
+         RSVP SECTION
+    ========================== -->
+
+    <section class="section rsvp-section">
+
+      <div class="no-gifts-banner">
+        <img
+          src="left-ornament.png"
+          alt=""
+          class="gift-ornament left"
+        >
+
+        <p class="no-gifts">
+          No boxed gifts please
+        </p>
+
+        <img
+          src="right-ornament.png"
+          alt=""
+          class="gift-ornament right"
+        >
+      </div>
+
+      <div class="rsvp-content">
+
+        <h2>
+          RSVP here
+        </h2>
+
+        <form
+          class="rsvp-form"
+          id="rsvpForm"
+          data-sheet-webhook-url="https://script.google.com/macros/s/AKfycbxmsSkMf4oo4h2lWarGjKhdRpxwCSYv5qqaWvQu5y0wxCPVu5fnm-8auTOCH6yRsawV/exec"
+        >
+
+          <div class="attendance-options">
+
+            <p class="attendance-title">
+              Will you attend?
+            </p>
+
+            <label class="radio-option">
+
+              <input
+                type="radio"
+                name="attendance"
+                value="yes"
+                required
+              >
+
+              <span>Yes</span>
+
+            </label>
+
+            <label class="radio-option">
+
+              <input
+                type="radio"
+                name="attendance"
+                value="no"
+                required
+              >
+
+              <span>No</span>
+
+            </label>
+
+          </div>
+
+          <input
+            type="text"
+            name="name"
+            id="rsvpName"
+            placeholder="Name"
+            required
+          >
+
+          <input
+            type="number"
+            name="attendees"
+            id="rsvpAttendees"
+            placeholder="No. of Attendees"
+            min="0"
+            step="1"
+            required
+          >
+
+          <button
+            type="submit"
+            class="submit-button"
+            id="rsvpSubmitButton"
+          >
+            Send
+          </button>
+
+          <p
+            class="rsvp-status"
+            id="rsvpStatus"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+        <h3 class="thankyou">
+          Thankyou
+        </h3>
+
+      </div>
+
+</section>
+
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="script.js"></script>
+
+
+<script>
+
+const detailsSection = document.querySelector('.details-section');
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry) => {
+
+    if(entry.isIntersecting){
+
+      detailsSection.classList.add('reveal-active');
+
+    }
+
+  });
+
+}, {
+  threshold: 0.35
+});
+
+observer.observe(detailsSection);
+
+</script>
+
+</body>
+
+</html>

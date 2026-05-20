@@ -1,0 +1,1364 @@
+/* =========================
+   RESET
+========================= */
+/* ==================================================
+   FONTS
+================================================== */
+
+@font-face {
+  font-family: "CormorantCustom";
+
+  src:
+    url("fonts/Cormorant-VariableFont_wght.ttf")
+    format("truetype");
+
+  font-weight: 300 700;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CormorantCustom";
+
+  src:
+    url("fonts/Cormorant-Italic-VariableFont_wght.ttf")
+    format("truetype");
+
+  font-weight: 300 700;
+
+  font-style: bold-italic;
+}
+
+@font-face {
+  font-family: "CormorantInfantCustom";
+
+  src:
+    url("fonts/CormorantInfant-VariableFont_wght.ttf")
+    format("truetype");
+
+  font-weight: 300 700;
+
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "CormorantInfantCustom";
+
+  src:
+    url("fonts/CormorantInfant-Italic-VariableFont_wght.ttf")
+    format("truetype");
+
+  font-weight: 300 700;
+
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Cherolina";
+
+  src:
+    url("fonts/Cherolina.ttf")
+    format("truetype");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+/* ==================================================
+   TYPOGRAPHY
+================================================== */
+
+body {
+  font-family:
+    "CormorantInfantCustom",
+    serif;
+
+  color:
+    #2f2f2f;
+}
+
+/* names */
+
+.couple-names {
+  font-family:
+    "CormorantCustom",
+    serif;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.03em;
+
+  line-height:
+    0.88;
+}
+
+/* accents */
+/* ==================================================
+   FAMILY PREFIX
+================================================== */
+
+.family-prefix {
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  opacity: 0.9;
+}
+/* ==================================================
+   CONNECTIVE WORDS
+================================================== */
+
+.connective-word {
+  display: block;
+
+  margin:
+    1rem 0;
+
+  font-family:
+    "Cherolina",
+    cursive;
+
+  font-size: 6rem;
+
+  line-height: 1;
+
+  color: #a68a63;
+
+  font-weight: normal;
+
+  letter-spacing: 0;
+
+  text-transform: none;
+}
+.event-date,
+.event-time,
+.thankyou {
+  font-style: italic;
+}
+
+/* detail copy */
+
+.family-line,
+.intro-copy,
+.groom-family,
+.venue {
+  font-family:
+    "CormorantInfantCustom",
+    serif;
+
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --paper: #FFFFFF;
+  --paper-light: #fffaf2;
+  --ink: #2b1d12;
+  --muted: #7d6b55;
+  --gold: #b88a44;
+  --shadow: rgba(43, 28, 12, 0.18);
+
+  --base-scale: 1;
+--flap-scale: 1;
+
+ --base-shift-y: -8vh;
+--flap-shift-y: -8vh;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-envelope {
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+
+  background: #f5f1eb;
+
+  z-index: 20;
+}
+
+/* =========================
+   ENVELOPE IMAGES
+========================= */
+
+.envelope-base,
+.envelope-flap {
+  position: absolute;
+
+  width: auto;
+  height: 100dvh;
+
+  max-width: none;
+
+  display: block;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .envelope-scene {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 65vh;
+    height: 65vh;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: visible;
+  }
+
+  .envelope-base,
+  .envelope-flap {
+    width: auto;
+    height: 100%;
+  }
+  
+  .envelope-base {
+    transform: translateY(17vh);
+  }
+  
+}
+/* =========================
+   DESKTOP / TABLET
+========================= */
+
+@media (min-width: 769px) {
+
+  .envelope-base,
+  .envelope-flap {
+    width: 115vw;
+  }
+}
+
+/* =========================
+   BASE
+========================= */
+
+.envelope-base {
+  z-index: 1;
+
+  filter:
+    drop-shadow(0 40px 60px rgba(0,0,0,0.18));
+
+  transition:
+    opacity 3.2s cubic-bezier(0.16, 1, 0.3, 1) 2s,
+    filter 3.2s cubic-bezier(0.16, 1, 0.3, 1) 2s;
+}
+
+/* =========================
+   BASE OPENING STATE
+========================= */
+
+.envelope-open .envelope-base {
+  opacity: 0;
+
+  transition:
+    opacity 0.16s ease 1.38s;
+}
+/* =========================
+   FLAP
+========================= */
+
+.envelope-flap {
+  z-index: 3;
+
+  transform-origin: top center;
+
+  backface-visibility: hidden;
+
+  transform-style: preserve-3d;
+
+  will-change:
+    transform,
+    opacity;
+
+  contain: paint;
+
+  cursor: pointer;
+
+  image-rendering: auto;
+
+  -webkit-font-smoothing: antialiased;
+
+  animation-fill-mode: forwards;
+
+  transform:
+    translateY(-17vh)
+    translateZ(0);
+}
+/* =========================
+   OPEN STATE
+========================= */
+
+.envelope-flap.open {
+  animation:
+  flapOpen 1.38s
+  cubic-bezier(0.22, 1, 0.36, 1)
+  forwards;
+}
+
+/* =========================
+   FLAP KEYFRAMES
+========================= */
+
+@keyframes flapOpen {
+
+  0% {
+    transform:
+      rotateX(0deg)
+      translate3d(0, -17vh, 0);
+  }
+
+  18% {
+    transform:
+      rotateX(8deg)
+      translate3d(0, -18vh, 6px);
+  }
+
+  100% {
+    transform:
+      rotateX(24deg)
+      translate3d(0, -30vh, 24px);
+  }
+}
+/* =========================
+   SEAL AREA
+========================= */
+
+.seal-hit-area {
+  position: absolute;
+
+  left: 50%;
+top: 42%;
+
+  width: clamp(6rem, 10vw, 8rem);
+
+  aspect-ratio: 1;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+/* pulse */
+
+.seal-ring {
+  position: absolute;
+  inset: -0.4rem;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,245,215,0.7);
+
+  opacity: 0;
+
+  animation: pulse 2s ease-in-out infinite;
+
+  box-shadow:
+    0 0 1.4rem rgba(184,138,68,0.38);
+}
+
+/* open note */
+
+.open-note {
+  position: absolute;
+
+  left: 50%;
+  bottom: 2rem;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  color: rgba(58,39,23,0.72);
+
+  font-size: 0.76rem;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* hide helpers during open */
+
+.envelope-wrapper.opening .open-note,
+.envelope-wrapper.opening .seal-hit-area {
+  opacity: 0;
+}
+
+/* =========================
+   FADE OUT
+========================= */
+
+.hero-envelope.fade-out {
+  opacity: 0;
+  filter: blur(8px);
+
+  transition:
+    opacity 1.4s ease,
+    filter 1.4s ease;
+
+  pointer-events: none;
+}
+
+/* ==================================================
+   WEBSITE RESET
+================================================== */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+
+  background: #f3ede2;
+}
+
+/* =========================
+   INVITE EMERGENCE
+========================= */
+
+.invite-site {
+  opacity: 0;
+
+  transform:
+    translateY(18px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease;
+}
+
+.invite-site.show {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* ==================================================
+   GLOBAL SECTION
+================================================== */
+
+.section {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background-image:
+    url("paper-texture.png");
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  background-repeat:
+    no-repeat;
+}
+
+/* =========================================
+HERO SECTION
+========================================= */
+
+.hero-section {
+
+  min-height: 100dvh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding:
+    6rem 2rem 0;
+
+}
+
+
+/* =========================================
+CINEMATIC BACKGROUND
+========================================= */
+
+.cinematic-bg{
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 844px;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+/* =========================================
+LAYERS
+========================================= */
+
+.scene-layer{
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  z-index: 10;
+
+  opacity: 0;
+
+}
+
+.bg1{
+  z-index: 1;
+}
+
+.bg2{
+  z-index: 2;
+  transform: translateY(80px);
+}
+
+.bg3{
+  z-index: 3;
+  transform: translateY(100px);
+}
+
+.bg4{
+  z-index: 4;
+  transform: translateY(-80px);
+}
+
+
+/* =========================================
+HERO CONTENT RESET
+========================================= */
+
+.hero-content{
+
+  position: relative;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  width: 100%;
+
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 0;
+
+  transform: translateY(-70px);
+
+}
+
+/* =========================================
+REMOVE DEFAULT SPACING
+========================================= */
+
+.hero-content h1,
+.hero-content p,
+.hero-content div{
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+SPACING SYSTEM
+========================================= */
+
+.bismillah{
+  margin-bottom: 28px;
+}
+
+.family-line{
+  margin-bottom: 24px;
+}
+
+.intro-copy{
+  margin-bottom: 42px;
+
+  max-width: 320px;
+
+  line-height: 1.35;
+}
+
+.couple-names{
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  font-size: 5.5rem !important;
+
+  line-height: .82 !important;
+
+  margin-top: 2rem !important;
+  margin-bottom: 1.5rem !important;
+
+  gap: 0 !important;
+
+}
+
+.connective-word{
+
+  font-size: .38em !important;
+
+  line-height: 1 !important;
+
+  margin: -.9rem 0 !important;
+
+}
+
+.groom-family{
+  max-width: 320px;
+  line-height: 1.25;
+
+  max-width: 300px;
+
+  line-height: 1.3;
+
+  color: #3f3a37;
+  margin-top: .5rem;
+
+  text-shadow:
+    0 3px 10px rgba(255,255,255,1),
+  0 0 18px rgba(255,255,255,.95);
+
+  white-space: nowrap;
+
+  font-size: 1rem;
+
+
+}
+
+
+/* =========================================
+FLOATING ANIMATION
+========================================= */
+
+@keyframes lotusFloat{
+
+  from{
+    transform: translateY(0px);
+  }
+
+  to{
+    transform: translateY(-12px);
+  }
+
+}
+
+@keyframes topFloat{
+
+  from{
+    transform: translateY(0px);
+  }
+
+  to{
+    transform: translateY(10px);
+  }
+
+}
+
+/* =========================================
+DETAILS SECTION RESET
+========================================= */
+
+.details-section{
+  position: relative;
+  background-image:
+    url("paper-texture.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 904px;
+  padding: 5.5rem 2rem 22rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* =========================================
+DETAILS CONTENT
+========================================= */
+
+.details-content{
+  max-width: 308px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.95rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+INSHAA ALLAH
+========================================= */
+
+.details-heading{
+  font-family:
+    "CormorantCustom",
+    serif;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #7d8871;
+  margin: 0;
+}
+
+/* =========================================
+ON
+========================================= */
+
+.details-on{
+  font-family:
+    "Cherolina",
+    cursive;
+  font-size: 4rem;
+  line-height: 0.95;
+  color: #7d8871;
+  margin: 0.1rem 0 0.2rem;
+}
+
+/* =========================================
+DATE
+========================================= */
+
+.event-date{
+  font-family:
+    "CormorantInfantCustom",
+    serif;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  color: #383837;
+  margin: 0.5rem 0 0;
+}
+
+/* =========================================
+TIME
+========================================= */
+
+.event-time{
+  font-family:
+    "CormorantInfantCustom",
+    serif;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  color: #383837;
+  margin: 0;
+}
+
+/* =========================================
+VENUE
+========================================= */
+
+.venue{
+  max-width: 308px;
+  margin: 1.4rem 0 1.8rem;
+  color: #1b1b1b;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.venue strong{
+  font-weight: 700;
+}
+
+
+/* =========================================
+MAP BUTTON
+========================================= */
+
+.map-button{
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 308px;
+  min-height: 54px;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid #617667;
+  background: #f2f2f2;
+  color: #383837;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "Segoe UI",
+    sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .3s ease, background .3s ease;
+}
+
+/* =========================================
+BUTTON HOVER
+========================================= */
+
+.map-button:hover{
+  transform: translateY(-2px);
+  background: #f7f7f7;
+}
+
+
+/* ==================================================
+   RSVP SECTION RESET
+================================================== */
+
+.rsvp-section {
+  position: relative;
+
+  min-height: 100dvh;
+
+  margin-top: -3rem;
+
+  padding:
+    7rem 2rem 0;
+
+  text-align: center;
+
+  background:
+    #FAFAF0;
+
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+
+  z-index: 5;
+
+  overflow: hidden;
+}
+
+/* content */
+
+.rsvp-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 28rem;
+
+  margin: 0 auto;
+}
+
+/* no-gifts banner */
+
+.no-gifts-banner {
+  width: min(760px, 100%);
+  margin: 0 auto 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+}
+
+.gift-ornament {
+  width: clamp(82px, 16vw, 130px);
+  height: auto;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.no-gifts {
+  margin: 0;
+  color: #3f4346;
+  font-size: clamp(1.8rem, 5.4vw, 2.4rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+/* heading */
+
+.rsvp-content h2 {
+  margin-bottom: 3rem;
+
+  color: #8a9480;
+
+  font-size: 3rem;
+
+  font-weight: 400;
+}
+
+/* form */
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.2rem;
+}
+
+/* attendance */
+
+.attendance-options {
+  margin-bottom: 2rem;
+}
+
+.attendance-title {
+  margin-bottom: 1rem;
+
+  font-size: 1.2rem;
+
+  font-weight: 600;
+
+  color: #2f2f2f;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.6rem;
+
+  margin:
+    0 1rem;
+
+  color: #333;
+}
+
+/* inputs */
+
+.rsvp-form input {
+  width: 100%;
+
+  height: 40px;
+
+  padding:
+    0 1.4rem;
+
+  border:
+    1px solid #c9c1b6;
+
+  border-radius: 8px;
+
+  background:
+    rgba(255,255,255,0.8);
+
+  font-size: 1.05rem;
+
+  color: #2d2d2d;
+
+  outline: none;
+}
+
+.rsvp-form input:disabled {
+  background: #d3d3d3;
+  border: 2px solid #a4ad9a;
+  color: #7b866f;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.rsvp-form input:disabled::placeholder {
+  color: #7b866f;
+  opacity: 1;
+}
+
+/* submit */
+
+.submit-button {
+  width: 100%;
+
+  height: 4.5rem;
+
+  margin-top: 1rem;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+    #6f846d;
+
+  color: white;
+
+  font-size: 1.1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.92;
+}
+
+.rsvp-status {
+  min-height: 1.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #5f6659;
+  text-align: center;
+}
+
+.rsvp-status.is-error {
+  color: #9d3b3b;
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* thankyou */
+
+.thankyou {
+  margin-top: 5rem;
+
+  color: #b8b7ac;
+
+  font-size: clamp(3rem, 12vw, 5rem);
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+/* flowers */
+
+.flowers-bottom {
+  position: relative;
+
+  width: 100vw;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  margin-top: 3rem;
+}
+
+.flowers-bottom img {
+  width: 100%;
+
+  display: block;
+
+  mix-blend-mode: multiply;
+}
+
+.details-flowers {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-top: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.details-flowers img{
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s ease,
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.details-section.reveal-active .details-flowers img{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .details-flowers img{
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ==================================================
+   MUSIC TOGGLE
+================================================== */
+
+.music-toggle {
+  position: fixed;
+
+  right: 1.2rem;
+  bottom: 1.2rem;
+
+  width: 3.2rem;
+  height: 3.2rem;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    rgba(255,255,255,0.22);
+
+  backdrop-filter: blur(14px);
+
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+  cursor: pointer;
+
+  z-index: 9999;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.3s ease;
+}
+
+/* hover */
+
+.music-toggle:hover {
+  transform: scale(1.05);
+
+  background:
+    rgba(255,255,255,0.3);
+}
+
+/* icon */
+
+.music-toggle img {
+  width: 1.15rem;
+  height: 1.15rem;
+
+  object-fit: contain;
+
+  display: block;
+
+  opacity: 0.9;
+
+  pointer-events: none;
+}
+/* ==================================================
+   CHEROLINA RESET
+================================================== */
+
+.hero-section .couple-names span {
+  display: block !important;
+
+  margin: 1rem 0 !important;
+
+  font-family: "Cherolina" !important;
+
+  font-size: 5rem !important;
+
+  line-height: 1 !important;
+
+  color: #a68a63 !important;
+
+  font-weight: normal !important;
+
+  letter-spacing: 0 !important;
+
+  text-transform: none !important;
+}
+/* ==================================================
+   FAMILY NAMES
+================================================== */
+
+.family-line,
+.groom-family {
+  font-size: 1.35rem !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1.6;
+
+  color: #5f6659;
+}
+/* ==================================================
+   UNIFIED BUTTON SYSTEM
+================================================== */
+
+.map-button,
+.submit-button,
+button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  max-width: 22rem;
+
+  height: 40px;
+
+  padding:
+    0 1.8rem;
+
+  border: none;
+
+  border-radius: 999px;
+
+  font-family:
+    "CormorantInfantCustom",
+    serif;
+
+  font-size: 1.15rem;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  text-transform: none;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* map button */
+
+.map-button {
+  background:
+    rgba(255,255,255,0.55);
+
+  backdrop-filter: blur(10px);
+
+  color: #3a3a3a;
+
+  border:
+    1px solid #cfc6b8;
+}
+
+/* submit button */
+
+.submit-button {
+  background:
+    #6f846d;
+
+  color: white;
+}
+
+/* hover */
+
+.map-button:hover,
+.submit-button:hover {
+  transform:
+    translateY(-2px);
+
+  opacity: 0.92;
+}
+
+/* =========================
+   ENVELOPE FADE
+========================= */
+
+.envelope-open .envelope-base,
+.envelope-open .envelope-flap {
+  opacity: 0;
+
+  transition:
+  opacity 0.16s ease 1.42s;
+}
+/* =========================
+   ENVELOPE BASE FADE
+========================= */
+
+.envelope-open .envelope-base {
+  opacity: 0;
+
+  transition:
+    opacity 0.42s ease,
+    filter 0.42s ease;
+
+  transition-delay: 1.32s;
+}
+/* =========================
+   ENVELOPE CINEMATIC FADE
+========================= */
+
+.envelope-base,
+.envelope-flap {
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.envelope-open .envelope-base,
+.envelope-open .envelope-flap {
+  opacity: 0;
+
+  transition-delay: 1.42s;
+}

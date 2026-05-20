@@ -188,12 +188,14 @@ body {
 ========================= */
 
 .hero-envelope {
-  position: fixed;
-  inset: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
 
   overflow: hidden;
 
-  background: #f5f1eb;
+  background: #dfe6d6;
 
   z-index: 20;
 }
@@ -206,8 +208,12 @@ body {
 .envelope-flap {
   position: absolute;
 
-  width: auto;
-  height: 100dvh;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: 50% 56%;
 
   max-width: none;
 
@@ -223,9 +229,8 @@ body {
   .envelope-scene {
     position: absolute;
     inset: 0;
-    width: 100vw;
-    height: 100svh;
-    height: 100dvh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
 
@@ -233,10 +238,6 @@ body {
   .envelope-flap {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: 50% 56%;
-    left: 0;
-    top: 0;
   }
   
   .envelope-base {
@@ -246,22 +247,6 @@ body {
   .envelope-flap {
     transform: translate3d(0, -8dvh, 0);
   }
-
-  .envelope-flap.open {
-    animation-name: flapOpenMobile;
-  }
-  
-}
-/* =========================
-   DESKTOP / TABLET
-========================= */
-
-@media (min-width: 769px) {
-
-  .envelope-base,
-  .envelope-flap {
-    width: 115vw;
-  }
 }
 
 /* =========================
@@ -270,6 +255,7 @@ body {
 
 .envelope-base {
   z-index: 1;
+  transform: none;
 
   filter:
     drop-shadow(0 40px 60px rgba(0,0,0,0.18));
@@ -317,7 +303,7 @@ body {
   animation-fill-mode: forwards;
 
   transform:
-    translateY(-17vh)
+    translateY(-18dvh)
     translateZ(0);
 }
 /* =========================
@@ -340,33 +326,19 @@ body {
   0% {
     transform:
       rotateX(0deg)
-      translate3d(0, -17vh, 0);
+      translate3d(0, -18dvh, 0);
   }
 
   18% {
     transform:
       rotateX(8deg)
-      translate3d(0, -18vh, 6px);
+      translate3d(0, -20dvh, 6px);
   }
 
   100% {
     transform:
       rotateX(24deg)
-      translate3d(0, -30vh, 24px);
-  }
-}
-
-@keyframes flapOpenMobile {
-  0% {
-    transform: rotateX(0deg) translate3d(0, -8dvh, 0);
-  }
-
-  18% {
-    transform: rotateX(8deg) translate3d(0, -10dvh, 6px);
-  }
-
-  100% {
-    transform: rotateX(24deg) translate3d(0, -20dvh, 24px);
+      translate3d(0, -30dvh, 24px);
   }
 }
 /* =========================
@@ -416,7 +388,8 @@ top: 42%;
   position: absolute;
 
   left: 50%;
-  bottom: 2rem;
+  bottom: 2.2rem;
+  top: auto;
 
   transform: translateX(-50%);
 
@@ -433,13 +406,29 @@ top: 42%;
   transition:
     opacity 0.5s ease,
     transform 0.5s ease;
+
+  pointer-events: none;
+  animation: openNoteFloat 1.7s ease-in-out infinite;
 }
 
 /* hide helpers during open */
 
-.envelope-wrapper.opening .open-note,
-.envelope-wrapper.opening .seal-hit-area {
+.envelope-scene.opening ~ .open-note {
   opacity: 0;
+  transform: translate(-50%, 10px);
+}
+
+@keyframes openNoteFloat {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0.72;
+  }
+
+  50% {
+    transform: translate(-50%, -6px);
+    opacity: 1;
+  }
 }
 
 /* =========================
@@ -449,10 +438,14 @@ top: 42%;
 .hero-envelope.fade-out {
   opacity: 0;
   filter: blur(8px);
+  min-height: 0;
+  height: 0;
 
   transition:
     opacity 1.4s ease,
-    filter 1.4s ease;
+    filter 1.4s ease,
+    min-height 0s linear 1.4s,
+    height 0s linear 1.4s;
 
   pointer-events: none;
 }
@@ -530,6 +523,8 @@ HERO SECTION
 .hero-section {
 
   min-height: 100dvh;
+  background-image: none;
+  background: #dfe6d6;
 
   display: flex;
   justify-content: center;
@@ -552,9 +547,11 @@ CINEMATIC BACKGROUND
 
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
 
   width: 100%;
-  height: 844px;
+  height: 100%;
 
   overflow: hidden;
 
@@ -574,7 +571,7 @@ LAYERS
   width: 100%;
   height: 100%;
 
-  object-fit: contain;
+  object-fit: cover;
 
   z-index: 10;
 
@@ -1089,6 +1086,11 @@ BUTTON HOVER
     opacity 0.3s ease;
 }
 
+.rsvp-form .submit-button {
+  width: 100%;
+  max-width: 100%;
+}
+
 .submit-button:hover {
   transform: translateY(-2px);
 
@@ -1150,8 +1152,10 @@ BUTTON HOVER
 
 .details-flowers {
   position: absolute;
-  left: 50%;
+  left: 0;
   bottom: 0;
+  width: 100%;
+  transform: none;
   margin-top: 0;
   pointer-events: none;
   z-index: 1;
@@ -1159,6 +1163,7 @@ BUTTON HOVER
 
 .details-flowers img{
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   opacity: 0;
@@ -1402,25 +1407,34 @@ button {
 }
 
 /* ==================================================
-   LANDSCAPE: KEEP MOBILE CANVAS + PASTEL SIDES
+   GLOBAL: ALWAYS RENDER AS MOBILE CANVAS
 ================================================== */
 
-@media (orientation: landscape) and (max-height: 900px) {
-  body {
-    background: #eef3e6;
-  }
+body {
+  background: #eef3e6;
+}
 
-  .hero-envelope {
-    left: 50%;
-    right: auto;
-    width: min(430px, 100vw);
-    transform: translateX(-50%);
-    box-shadow: 0 0 0 200vmax #eef3e6;
-  }
+body.envelope-locked {
+  overflow: hidden;
+  height: 100svh;
+  height: 100dvh;
+}
 
-  .invite-site {
-    width: min(430px, 100vw);
-    margin: 0 auto;
-    box-shadow: 0 0 0 200vmax #eef3e6;
-  }
+.hero-envelope {
+  width: min(430px, 100vw);
+  margin: 0 auto;
+  min-height: 100svh;
+  min-height: 100dvh;
+  box-shadow: 0 0 0 200vmax #eef3e6;
+}
+
+.envelope-scene {
+  width: 100%;
+  height: 100%;
+}
+
+.invite-site {
+  width: min(430px, 100vw);
+  margin: 0 auto;
+  box-shadow: 0 0 0 200vmax #eef3e6;
 }

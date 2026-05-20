@@ -12,6 +12,29 @@ let started = false;
 let muted = false;
 
 /* =========================
+   ALWAYS START FROM FOLD 1
+========================= */
+
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+const resetToTop = () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+};
+
+window.addEventListener("load", () => {
+  resetToTop();
+  requestAnimationFrame(resetToTop);
+});
+
+window.addEventListener("pageshow", () => {
+  resetToTop();
+});
+
+/* =========================
    ENVELOPE OPEN
 ========================= */
 

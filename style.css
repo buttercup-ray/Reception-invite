@@ -595,7 +595,8 @@ LAYERS
 
 .bg4{
   z-index: 4;
-  transform: translateY(-80px);
+  transform: translateY(-20px);
+  object-position: center top;
 }
 
 
@@ -641,15 +642,47 @@ SPACING SYSTEM
 ========================================= */
 
 .bismillah{
-  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: -26px;
+  margin-bottom: 72px;
+}
+
+.bismillah img {
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+.bismillah-translation {
+  margin-top: 0 !important;
+
+  max-width: 340px;
+  width: 100%;
+
+  font-family:
+    "CormorantCustom",
+    serif;
+  font-size: 10pt;
+  font-weight: 500;
+  line-height: 1.2;
+
+  color: #44484c;
+
+  text-align: center;
+  text-wrap: pretty;
+  letter-spacing: 0;
 }
 
 .family-line{
-  margin-bottom: 24px;
+  margin-bottom: 48px;
 }
 
 .intro-copy{
-  margin-bottom: 42px;
+  margin-bottom: 40px;
 
   max-width: 320px;
 
@@ -931,7 +964,7 @@ BUTTON HOVER
 }
 
 .gift-ornament {
-  width: clamp(82px, 16vw, 130px);
+  width: clamp(30px, 7vw, 52px);
   height: auto;
   display: block;
   flex: 0 0 auto;
@@ -940,12 +973,32 @@ BUTTON HOVER
 .no-gifts {
   margin: 0;
   color: #3f4346;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
   font-style: italic;
-  line-height: 1.1;
+  line-height: 1.35;
   letter-spacing: 0.01em;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 480px;
+}
+
+.no-gifts-note {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: italic;
+  color: #5b6166;
+  letter-spacing: 0;
+}
+
+.no-gifts-emphasis {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 17px;
+  font-weight: 700;
+  font-style: normal;
+  color: #3f4346;
 }
 
 /* heading */
@@ -1143,13 +1196,15 @@ BUTTON HOVER
 }
 
 .end-mg-flowers {
-  width: 100vw;
+  width: calc(100% + 4rem);
   margin-top: 1.2rem;
-  margin-left: calc(50% - 50vw);
+  margin-left: -2rem;
+  max-width: none;
 }
 
 .end-mg-flowers img {
   width: 100%;
+  height: auto;
   display: block;
 }
 

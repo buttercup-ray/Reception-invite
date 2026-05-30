@@ -56,7 +56,7 @@ flap.addEventListener("click", async () => {
       await music.play();
 
       let volume = 0;
-      const targetVolume = 0.08;
+      const targetVolume = 0.05;
 
       const fade = setInterval(() => {
 

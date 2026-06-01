@@ -170,6 +170,7 @@ body {
 
  --base-shift-y: -8vh;
 --flap-shift-y: -8vh;
+  --figma-first-fold-height: 844px;
 }
 
 html,
@@ -522,7 +523,8 @@ HERO SECTION
 
 .hero-section {
 
-  min-height: 100dvh;
+  min-height: var(--figma-first-fold-height);
+  height: var(--figma-first-fold-height);
   background-image: none;
   background: #dfe6d6;
 
@@ -551,7 +553,7 @@ CINEMATIC BACKGROUND
   bottom: 0;
 
   width: 100%;
-  height: 100%;
+  height: var(--figma-first-fold-height);
 
   overflow: hidden;
 
@@ -569,7 +571,7 @@ LAYERS
   left: 0;
 
   width: 100%;
-  height: 100%;
+  height: var(--figma-first-fold-height);
 
   object-fit: cover;
 
@@ -579,18 +581,32 @@ LAYERS
 
 }
 
+@media (min-width: 769px) {
+  .hero-section {
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .cinematic-bg,
+  .scene-layer {
+    height: 100%;
+  }
+}
+
 .bg1{
   z-index: 1;
 }
 
 .bg2{
   z-index: 2;
-  transform: translateY(80px);
+  transform: translateY(68px);
+  object-position: center bottom;
 }
 
 .bg3{
   z-index: 3;
-  transform: translateY(100px);
+  transform: translateY(84px);
+  object-position: center bottom;
 }
 
 .bg4{
@@ -622,7 +638,7 @@ HERO CONTENT RESET
   padding-right: 32px;
   padding-bottom: 0;
 
-  transform: translateY(-70px);
+  transform: translateY(-158px);
 
 }
 
@@ -645,10 +661,12 @@ SPACING SYSTEM
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 
   margin-top: -26px;
-  margin-bottom: 72px;
+  margin-bottom: 42px;
+  position: relative;
+  top: -18px;
 }
 
 .bismillah img {
@@ -660,33 +678,63 @@ SPACING SYSTEM
 .bismillah-translation {
   margin-top: 0 !important;
 
-  max-width: 340px;
-  width: 100%;
+  max-width: 184.617px;
+  width: 184.617px;
 
   font-family:
-    "CormorantCustom",
-    serif;
-  font-size: 10pt;
-  font-weight: 500;
-  line-height: 1.2;
+    "SF Pro Text",
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
 
-  color: #44484c;
+  color: #383837;
 
   text-align: center;
   text-wrap: pretty;
   letter-spacing: 0;
+  text-shadow: 0 1px 2.9px rgba(255, 255, 255, 1);
 }
 
 .family-line{
-  margin-bottom: 48px;
+  margin-bottom: 16px;
+
+  width: 342px;
+  height: 24px;
+
+  font-family: "CormorantCustom", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  color: #383837;
+  position: relative;
+  top: -10px;
 }
 
 .intro-copy{
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 
-  max-width: 320px;
+  width: 249.853px;
+  max-width: 249.853px;
 
-  line-height: 1.35;
+  font-family:
+    "SF Pro Text",
+    "SF Pro Display",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: #383837;
+  text-shadow: 0 1px 2.9px rgba(255, 255, 255, 1);
+  position: relative;
+  top: -10px;
 }
 
 .couple-names{
@@ -695,50 +743,68 @@ SPACING SYSTEM
   flex-direction: column !important;
   align-items: center !important;
 
-  font-size: 5.5rem !important;
+  font-family: "CormorantCustom", serif;
+  font-size: 88px !important;
+  font-weight: 700;
+  font-style: italic;
 
-  line-height: .82 !important;
+  line-height: 0.82 !important;
+  color: #383837;
 
-  margin-top: 2rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 10px !important;
 
   gap: 0 !important;
+  letter-spacing: 0;
 
 }
 
 .connective-word{
 
-  font-size: .38em !important;
+  font-family: "Cherolina", cursive;
+  font-size: 64px !important;
+  font-weight: 400;
+  font-style: normal;
+  color: #383837;
 
-  line-height: 1 !important;
+  line-height: normal !important;
 
-  margin: -.9rem 0 !important;
+  margin: -4px 0 -16px !important;
 
 }
 
 .groom-family{
-  max-width: 320px;
-  line-height: 1.25;
+  width: 280px;
+  max-width: 280px;
+  line-height: normal;
 
-  max-width: 300px;
-
-  line-height: 1.3;
-
-  color: #3f3a37;
-  margin-top: .5rem;
+  color: #383837;
+  margin-top: 6px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 
-  text-shadow:
-    0 3px 10px rgba(255,255,255,1),
-  0 0 18px rgba(255,255,255,.95);
+  text-shadow: none;
 
   white-space: normal;
 
-  font-size: 1rem;
+  font-family: "CormorantCustom", serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
 
 
+}
+
+.family-prefix {
+  display: inline-block;
+  margin-bottom: 0;
+  font-family: "CormorantCustom", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  color: #383837;
+  opacity: 1;
 }
 
 
@@ -776,10 +842,12 @@ DETAILS SECTION RESET
 
 .details-section{
   position: relative;
-  background-image:
-    url("paper-texture.png");
-  background-size: cover;
-  background-position: center;
+  background-image: linear-gradient(
+    180deg,
+    #f7f1e7 0%,
+    #f4eee3 55%,
+    #f1eadf 100%
+  );
   min-height: 904px;
   padding: 5.5rem 2rem 22rem;
   text-align: center;
@@ -1478,8 +1546,8 @@ BUTTON HOVER
   right: 1.2rem;
   bottom: 1.2rem;
 
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 3.84rem;
+  height: 3.84rem;
 
   border: none;
   border-radius: 50%;
@@ -1520,8 +1588,8 @@ BUTTON HOVER
 /* icon */
 
 .music-toggle img {
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 1.74rem;
+  height: 1.74rem;
 
   object-fit: contain;
 
@@ -1538,15 +1606,15 @@ BUTTON HOVER
 .hero-section .couple-names span {
   display: block !important;
 
-  margin: 1rem 0 !important;
+  margin: -4px 0 -20px !important;
 
   font-family: "Cherolina" !important;
 
-  font-size: 5rem !important;
+  font-size: 64px !important;
 
-  line-height: 1 !important;
+  line-height: normal !important;
 
-  color: #a68a63 !important;
+  color: #383837 !important;
 
   font-weight: normal !important;
 
@@ -1560,13 +1628,13 @@ BUTTON HOVER
 
 .family-line,
 .groom-family {
-  font-size: 1.35rem !important;
+  font-size: 18px !important;
 
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 
-  line-height: 1.6;
+  line-height: normal !important;
 
-  color: #5f6659;
+  color: #383837 !important;
 }
 /* ==================================================
    UNIFIED BUTTON SYSTEM

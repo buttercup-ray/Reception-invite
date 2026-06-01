@@ -17,7 +17,7 @@ let musicSource = null;
 let gainNode = null;
 
 const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-const targetVolume = isMobileViewport ? 0.01 : 0.05;
+const targetVolume = isMobileViewport ? 0.03 : 0.05;
 
 const setEffectiveVolume = (value) => {
   currentVolume = value;

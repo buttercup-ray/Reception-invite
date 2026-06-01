@@ -10,6 +10,42 @@ const musicIcon = document.getElementById("musicIcon");
 
 let started = false;
 let muted = false;
+let currentVolume = 0;
+
+let audioCtx = null;
+let musicSource = null;
+let gainNode = null;
+
+const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+const targetVolume = isMobileViewport ? 0.01 : 0.05;
+
+const setEffectiveVolume = (value) => {
+  currentVolume = value;
+
+  if (gainNode) {
+    gainNode.gain.value = muted ? 0 : value;
+    return;
+  }
+
+  music.volume = muted ? 0 : value;
+};
+
+const setupAudioGain = async () => {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass || gainNode) return;
+
+  audioCtx = new AudioContextClass();
+  musicSource = audioCtx.createMediaElementSource(music);
+  gainNode = audioCtx.createGain();
+
+  gainNode.gain.value = 0;
+  musicSource.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  if (audioCtx.state === "suspended") {
+    await audioCtx.resume();
+  }
+};
 
 /* =========================
    ALWAYS START FROM FOLD 1
@@ -51,13 +87,12 @@ flap.addEventListener("click", async () => {
 
     try {
 
-      music.volume = 0;
+      await setupAudioGain();
+      setEffectiveVolume(0);
 
       await music.play();
 
       let volume = 0;
-      const targetVolume = 0.01;
-
       const fade = setInterval(() => {
 
         volume += 0.02;
@@ -69,7 +104,7 @@ flap.addEventListener("click", async () => {
           clearInterval(fade);
         }
 
-        music.volume = volume;
+        setEffectiveVolume(volume);
 
       }, 120);
 
@@ -110,7 +145,8 @@ musicToggle.addEventListener("click", () => {
 
   muted = !muted;
 
-  music.muted = muted;
+  music.muted = false;
+  setEffectiveVolume(currentVolume);
 
   musicIcon.src = muted
     ? "music-off.svg"

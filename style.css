@@ -396,11 +396,12 @@ top: 42%;
 
   z-index: 10;
 
-  color: rgba(58,39,23,0.72);
+  color: rgba(58,39,23,0.82);
 
-  font-size: 0.76rem;
+  font-size: 1.08rem;
+  font-weight: 500;
 
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
 
   text-transform: uppercase;
 
@@ -1041,8 +1042,8 @@ BUTTON HOVER
 .no-gifts {
   margin: 0;
   color: #3f4346;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   font-style: italic;
   line-height: 1.35;
   letter-spacing: 0.01em;
@@ -1053,17 +1054,17 @@ BUTTON HOVER
 .no-gifts-note {
   display: inline-block;
   margin-top: 0.35rem;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   font-style: italic;
-  color: #5b6166;
+  color: #4c5550;
   letter-spacing: 0;
 }
 
 .no-gifts-emphasis {
   display: inline-block;
   margin-top: 0.2rem;
-  font-size: 17px;
+  font-size: 23px;
   font-weight: 700;
   font-style: normal;
   color: #3f4346;
@@ -1494,8 +1495,9 @@ BUTTON HOVER
   margin: 0.75rem 0 1.9rem;
   color: #7c886f;
   font-family: "CormorantInfantCustom", serif;
-  font-size: 0.86rem;
-  line-height: 1.2;
+  font-size: 1.22rem;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .dress-code-line {
@@ -1510,19 +1512,19 @@ BUTTON HOVER
 .dress-code-line strong {
   display: block;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 .dress-code-line span {
   display: block;
   margin-top: 0.3rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.76rem;
+  font-size: 1.2rem;
   font-style: italic;
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.15;
 }
 
 .wardrobe-card {

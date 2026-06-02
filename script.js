@@ -11,6 +11,7 @@ const musicIcon = document.getElementById("musicIcon");
 let started = false;
 let muted = false;
 let currentVolume = 0;
+let pausedByHiddenTab = false;
 
 let audioCtx = null;
 let musicSource = null;
@@ -152,6 +153,29 @@ musicToggle.addEventListener("click", () => {
     ? "music-off.svg"
     : "music-on.svg";
 
+});
+
+document.addEventListener("visibilitychange", async () => {
+  if (document.hidden) {
+    pausedByHiddenTab = started && !music.paused;
+    music.pause();
+    return;
+  }
+
+  if (!pausedByHiddenTab || muted) return;
+
+  pausedByHiddenTab = false;
+
+  try {
+    if (audioCtx && audioCtx.state === "suspended") {
+      await audioCtx.resume();
+    }
+
+    await music.play();
+    setEffectiveVolume(currentVolume);
+  } catch (err) {
+    console.log("Music resume failed:", err);
+  }
 });
 
 /* =========================

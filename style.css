@@ -1825,3 +1825,29 @@ body.envelope-locked {
   margin: 0 auto;
   box-shadow: 0 0 0 200vmax #eef3e6;
 }
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 16px calc(env(safe-area-inset-bottom) + 24px);
+  background: #fff;
+  text-align: center;
+}
+
+.invite-credit {
+  display: inline-block;
+  color: rgba(43, 29, 18, 0.72);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.invite-credit:hover,
+.invite-credit:focus-visible {
+  color: var(--gold);
+  text-decoration: underline;
+}
